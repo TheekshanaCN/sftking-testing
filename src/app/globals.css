@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-red: #dc2626;
+  --secondary-red: #ef4444;
+  --accent-red: #f87171;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: #0C0101; /* Force Dark Background */
+  color: #f8fafc; /* Force Light Text */
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #fca5a5; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #ef4444; }
+
+/* Input autofill fix (Prevents blue background on Chrome) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #1e293b inset !important;
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Animations */
+@keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.animate-spin-slow { animation: spin-slow 12s linear infinite; }
+
+@keyframes online-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+.online-glow { animation: online-pulse 2s infinite; }
+
+@keyframes emergency-alert {
+  0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.6); }
+  70% { box-shadow: 0 0 0 15px rgba(220, 38, 38, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+.emergency-pulse { animation: emergency-alert 1.5s infinite; }
+
+@keyframes glass-sweep {
+  0% { transform: translateX(-140%) skewX(-20deg); opacity: 0; }
+  18% { opacity: 1; }
+  50% { opacity: 0.85; }
+  100% { transform: translateX(140%) skewX(-20deg); opacity: 0; }
+}
+
+@keyframes splash-glow-text {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.18)) drop-shadow(0 0 18px rgba(220, 38, 38, 0.18)); }
+  50% { filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.34)) drop-shadow(0 0 28px rgba(220, 38, 38, 0.34)); }
+}
+
+.glass-sweep {
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: -55%;
+  width: 38%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.03) 28%, rgba(255, 255, 255, 0.42) 50%, rgba(255, 255, 255, 0.03) 72%, transparent 100%);
+  filter: blur(10px);
+  animation: glass-sweep 1.9s ease-in-out infinite;
+}
+
+.splash-glow-text {
+  animation: splash-glow-text 2.4s ease-in-out infinite;
+}
+
+/* Security */
+img { -webkit-user-drag: none; user-drag: none; pointer-events: none; }

@@ -1,0 +1,9 @@
+{
+  "appId": "com.sftking.app",
+  "appName": "SFT King",
+  "webDir": "out",
+  "server": {
+    "url": "https://sftking.lk",
+    "cleartext": true
+  }
+}
