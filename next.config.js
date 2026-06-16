@@ -21,16 +21,6 @@ const nextConfig = {
 
   devIndicators: false,
 
-  async redirects() {
-    return [
-      {
-        source: '/admin/login',
-        destination: '/auth',
-        permanent: false,
-      },
-    ];
-  },
-
   async headers() {
     return [
       {

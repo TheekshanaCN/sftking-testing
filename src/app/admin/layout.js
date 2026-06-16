@@ -20,11 +20,8 @@ export default function AdminLayout({ children }) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const hasRedirectedRef = useRef(false);
 
-    // Protection Logic for ADMINS
+    // ✅ THE FIX: Protection Logic for ADMINS
     useEffect(() => {
-        // Skip auth guard for the /admin/login redirect page itself
-        if (pathname === '/admin/login') return;
-
         if (!loading) {
             if (!user && !hasRedirectedRef.current) {
                 hasRedirectedRef.current = true;
@@ -68,9 +65,6 @@ export default function AdminLayout({ children }) {
             }
         };
     }, [user, loading, router, socket]);
-
-    // Let the /admin/login redirect page render without auth so it can forward to /auth
-    if (pathname === '/admin/login') return <>{children}</>;
 
     if (loading || !user) return null;
 
